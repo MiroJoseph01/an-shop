@@ -1,0 +1,33 @@
+<h3>Number of items: <span>{{items.length}}</span></h3>
+<h2>Selected item</h2>
+<ul>
+  <li>Name: {{item.name}}</li>
+  <li>Description: {{item.description}}</li>
+  <li>Price: {{item.pirce}}</li>
+  <li>Category: {{item.category}}</li>
+  <li style="font-size: 30px; list-style-type: none;">
+    <div *ngIf="item.isAvaliable; then thenBlock; else elseBlock">this is ignored</div>
+    <ng-template #thenBlock>&#9989;</ng-template>
+    <ng-template #elseBlock>&#10060;</ng-template>
+  </li>
+</ul>
+
+<div class="panel panel-default">
+  <h1 class="panel-heading">Items</h1>
+  <div class="panel-body">
+    <ul>
+      <li *ngFor="let it of items">
+        <ul>
+            <li>Name: {{it.name}} 
+                <div *ngIf="it.isAvaliable; then thenBlock; else elseBlock"></div>
+                <ng-template #thenBlock>&#9989;</ng-template>
+                <ng-template #elseBlock>&#10060;</ng-template>
+            </li> 
+            <li>Description: {{it.description}}</li>
+            <li>Price: {{it.pirce}}</li>
+            <li>Category: {{it.category}}</li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</div>

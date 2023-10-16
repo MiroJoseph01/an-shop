@@ -1,0 +1,22 @@
+
+<h1>Cart</h1>
+<div *ngIf="cart == undefined || cart.length == 0; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+            <h3>Your Cart is empty &#10060;</h3>
+        </ng-template>
+        <ng-template #elseBlock>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Total price: <b>{{total()}} $</b></p>
+                </div>
+                <div class="col-sm">
+                    <button class="btn btn-danger mx-1" (click)="clearCart()">Clear Cart</button>
+                </div>
+            </div>
+        
+            <ul class="list-group my-5">
+                <div *ngFor="let product of cart; trackBy:name">
+                    <li class="list-group-item">{{product.name}}</li>
+                </div>
+            </ul>
+        </ng-template>

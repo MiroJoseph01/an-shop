@@ -1,0 +1,22 @@
+<div class="card">
+    <span class="card-header" style="font-size: 32px; list-style-type: none;" align="center">
+        <div *ngIf="item.isAvaliable; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>&#9989;</ng-template>
+        <ng-template #elseBlock>&#10060;</ng-template>
+    </span>
+    <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.description}}</p>
+        <p class="card-text"><b>Category:</b> {{item.category}}</p>
+        <p class="card-text"><i>Price: {{item.pirce}} $</i></p>
+    </div>
+    <span class="card-footer" align="center">
+        <div *ngIf="item.isAvaliable; then thenBlockButton; else elseBlockButton"></div>
+        <ng-template #thenBlockButton>
+            <button #thenBlock class="btn btn-primary" (click)='onBuyTask()'>Buy</button>
+        </ng-template>
+        <ng-template #elseBlockButton>
+            <button #elseBlock class="btn btn-primary" disabled>Buy</button>
+        </ng-template>
+    </span>
+</div>
